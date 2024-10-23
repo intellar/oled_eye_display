@@ -21,6 +21,14 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
     //                               int8_t dc_pin, int8_t rst_pin, int8_t cs_pin,
       //                             uint32_t bitrate)
 
+
+// states for demo 
+int demo_mode = 1;
+static const int max_animation_index = 8;
+int current_animation_index = 0;
+
+
+
 //reference state
 int ref_eye_height = 40;
 int ref_eye_width = 40;
@@ -300,11 +308,11 @@ void setup() {
   display.setTextSize(1);             // Normal 1:1 pixel scale
   display.setTextColor(SSD1306_WHITE);        // Draw white text
   display.setCursor(0,0);             // Start at top-left corner
-  display.println(F("Intellar.ca"));
-  display.display();
-  delay(300);
+  display.println(F("Intellar.ca"));  
+  display.display();  
+  delay(2000);
   sleep();
-  
+  delay(2000);
 
   // Draw a single pixel in white
   //display.drawPixel(10, 10, SSD1306_WHITE);
@@ -312,31 +320,19 @@ void setup() {
   
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
 
+
+void launch_animation_with_index(int animation_index)
+{
 
   
-  //send A0 - A5  for animation 0 to 5
-  if(Serial.available()) {
-    String data = Serial.readString();
-    data.trim();
-    char cmd = data[0];
-    
-    
-    
-    if(cmd == 'A')
-    {
 
-      String arg = data.substring(1,data.length());
-      int anim = arg.toInt();
+  if(animation_index>max_animation_index)
+  {
+    animation_index=8;
+  }
 
-      Serial.print(cmd);
-      Serial.print(arg);
-      
-      
-
-      switch(anim)
+  switch(animation_index)
       {
         case 0:
           wakeup();
@@ -363,14 +359,63 @@ void loop() {
           sleep();
           break;
         case 8:
-          int dir_x = random(-1, 2);
-          int dir_y = random(-1, 2);
-          saccade(dir_x,dir_y);
-          delay(300);
-          saccade(-dir_x,-dir_y);
-          delay(300);
+          center_eyes(true);
+          for(int i=0;i<20;i++)
+          { 
+            int dir_x = random(-1, 2);
+            int dir_y = random(-1, 2);
+            saccade(dir_x,dir_y);
+            delay(1);
+            saccade(-dir_x,-dir_y);
+            delay(1);     
+          }
           break;
+          
       }
+}
+
+
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  // put your main code here, to run repeatedly:
+
+  if(demo_mode == 1)
+  {
+    // cycle animations
+    launch_animation_with_index(current_animation_index++);
+    if(current_animation_index > max_animation_index)
+    {
+      current_animation_index = 0;
     }
   }
+
+  
+  //send A0 - A5  for animation 0 to 5
+  if(Serial.available()) {
+    String data = Serial.readString();
+    data.trim();
+    char cmd = data[0];
+    
+    
+    
+    
+    if(cmd == 'A')
+    {
+      demo_mode = 0;
+
+      String arg = data.substring(1,data.length());
+      int anim = arg.toInt();
+      launch_animation_with_index(anim);
+      Serial.print(cmd);
+      Serial.print(arg);   
+    }
+
+    
+
+
+  }
+
+
 }
