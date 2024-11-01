@@ -1,5 +1,6 @@
 import display_control
-import serial
+#pip import pyserial
+import serial  
 import time
 
 arduino = serial.Serial("COM3", 115200, timeout=.1)

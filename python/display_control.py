@@ -1,3 +1,5 @@
+
+#pip import pyserial
 import serial
 
 def sendAnimToDisplay(display:serial,index):
