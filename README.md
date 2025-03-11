@@ -1,6 +1,8 @@
 # oled_eye_display
 Animated eyes on Oled display controlled with arduino nano, listening to command over usb connection.  Example with python.
 
+Added support for arduino libraries U8G2 and adafruit. check the arduino folder.
+
 complete description
   https://www.intellar.ca/blog/animated-eye-oled
   
