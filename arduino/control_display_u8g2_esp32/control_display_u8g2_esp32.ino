@@ -2,13 +2,12 @@
 #include <U8g2lib.h>
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define SCREEN_HEIGHT 128 // OLED display height, in pixels
 
 
 //be sure to initialize with your display.  see https://github.com/olikraus/u8g2/wiki/setup_tutorial 
 //U8G2_SH1107_128X128_F_SW_I2C u8g2(U8G2_R0,22,21);
 U8G2_SH1107_PIMORONI_128X128_F_HW_I2C u8g2(U8G2_R0);
-//U8G2_SH1107_128X128_F_2ND_HW_I2C u8g2(U8G2_R0);
 
 int COLOR_WHITE = 1;
 int COLOR_BLACK = 0;
