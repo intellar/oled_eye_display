@@ -7,7 +7,10 @@ complete description
   https://www.intellar.ca/blog/animated-eye-oled
   
 cycling of the animations:
-  https://www.youtube.com/watch?v=SV6P0KDAPRM
+
+arduino  https://www.youtube.com/watch?v=SV6P0KDAPRM
+
+esp32    https://www.youtube.com/shorts/9WIiZSyQFy4
 
 Example:
 ![face](https://github.com/intellar/oled_eye_display/assets/120540765/df08cd13-18a7-4cb7-ba06-3e5da848b927)
