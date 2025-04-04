@@ -1,13 +1,11 @@
+//intellar.ca 
+//2025
+
 #include <SPI.h>
 #include <U8g2lib.h>
 
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 128 // OLED display height, in pixels
 
 
-//be sure to initialize with your display.  see https://github.com/olikraus/u8g2/wiki/setup_tutorial 
-//U8G2_SH1107_128X128_F_SW_I2C u8g2(U8G2_R0,22,21);
-U8G2_SH1107_PIMORONI_128X128_F_HW_I2C u8g2(U8G2_R0);
 
 int COLOR_WHITE = 1;
 int COLOR_BLACK = 0;
@@ -18,6 +16,8 @@ int demo_mode = 1;
 static const int max_animation_index = 8;
 int current_animation_index = 0;
 
+static const int  SCREEN_WIDTH = 128; 
+static const int  SCREEN_HEIGHT = 128; 
 
 //reference state
 int ref_left_eye = 32;
@@ -36,6 +36,28 @@ int right_eye_height = ref_eye_height;
 int right_eye_width = ref_eye_width;
 int corner_radius = ref_corner_radius;
 
+
+
+//U8G2_SH1107_PIMORONI_128X128_F_SW_I2C u8g2(U8G2_R0,22,21);
+U8G2_SH1107_PIMORONI_128X128_F_HW_I2C u8g2(U8G2_R0);
+
+
+
+void setup() {
+  //initialize the u8g2 lib.
+  u8g2.setI2CAddress(0x78);
+  u8g2.setDisplayRotation(U8G2_R0);
+  u8g2.begin();
+
+  //clear screen and display startup info.
+  display_clearDisplay();
+  sleep();
+  u8g2.setFont(u8g2_font_ncenB10_tr);  
+  u8g2.drawStr(0,10,"intellar.ca");
+    
+  display_display();
+  delay(3000);  
+}
 
 
 void display_clearDisplay()
@@ -333,21 +355,6 @@ void move_big_eye(int direction)
 
 }
 
-void setup() {
-  // put your setup code here, to run once:
-  u8g2.setI2CAddress(0x78);
-  u8g2.setDisplayRotation(U8G2_R0);
-  u8g2.begin();
-
-  sleep();
-  u8g2.setFont(u8g2_font_ncenB10_tr);
-  
-  u8g2.drawStr(0,10,"intellar.ca");
-  
-  display_display();
-  delay(3000);
-  
-}
 
 
 
