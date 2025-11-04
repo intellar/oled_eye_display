@@ -7,7 +7,7 @@ Complete description
   
   https://www.intellar.ca/blog/animated-eye-oled
   
-You can buy a hardware kit for my project
+You can buy a hardware kit for this project and support the creation of new projects :
 
   https://www.intellar.ca/store
   
