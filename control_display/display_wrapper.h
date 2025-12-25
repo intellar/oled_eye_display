@@ -1,4 +1,4 @@
-#ifndef DISPLAY_WRAPPER_H
+    #ifndef DISPLAY_WRAPPER_H
 #define DISPLAY_WRAPPER_H
 
 #include "config.h"
@@ -32,9 +32,8 @@
     #define OLED_RESET -1
     Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-    // To use custom pins (software I2C), you would need to include <SoftwareSerial.h>
-    // and define the pins before initializing the display. This is more complex.
-    // It's generally recommended to use the hardware I2C pins for best performance.
+    // To use custom pins (software I2C), Adafruit libraries usually require specific constructors
+    // or bit-banging libraries, but Hardware I2C is recommended for performance.
 
     const int G_COLOR_WHITE = SSD1306_WHITE;
     const int G_COLOR_BLACK = SSD1306_BLACK;
@@ -54,6 +53,8 @@ inline void g_init_display() {
     display.setI2CAddress(0x78);
     display.begin();
 #elif defined(USE_ADAFRUIT_SSD1306)
+    // [ESP32] Pour utiliser des pins personnalisés, décommentez et modifiez la ligne suivante :
+    // Wire.begin(/*SDA=*/ 21, /*SCL=*/ 22);
     display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
 #endif
 }
