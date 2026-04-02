@@ -15,7 +15,10 @@ You can buy a hardware kit for this project and support the creation of new proj
 cycling of the animations:
 arduino  https://www.youtube.com/watch?v=SV6P0KDAPRM
 
-esp32    https://www.youtube.com/shorts/9WIiZSyQFy4
+demo with intellar-engine:
+esp32 https://youtube.com/shorts/v_g5v8qn-wk
+esp32-dual-display https://youtube.com/shorts/w5Q9UKIfWT0
+
 
 
 If you found this library useful in your project, please cite intellar.ca and considere giving it a star :star: 
