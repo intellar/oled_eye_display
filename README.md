@@ -16,7 +16,9 @@ cycling of the animations:
 arduino  https://www.youtube.com/watch?v=SV6P0KDAPRM
 
 demo with intellar-engine:
+
 esp32 https://youtube.com/shorts/v_g5v8qn-wk
+
 esp32-dual-display https://youtube.com/shorts/w5Q9UKIfWT0
 
 
